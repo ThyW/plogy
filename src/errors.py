@@ -8,6 +8,7 @@ class Error:
     unauthorized = 2
     invalid_input = 3
     unsupported_query_parameter = 4
+    not_found = 5
 
 
 def make_error(app: Flask, type: int) -> Response:
@@ -59,6 +60,18 @@ def make_error(app: Flask, type: int) -> Response:
                     }
                 ),
                 status=400,
+                mimetype="application/json",
+            )
+        case Error.not_found:
+            ret = app.response_class(
+                response=json.dumps(
+                    {
+                        "error": "NotFound",
+                        "message": "The resource you were looking for was not found.",
+                        "detail": "Please make sure that you are asking for the correct resource.",
+                    }
+                ),
+                status=404,
                 mimetype="application/json",
             )
         case _:

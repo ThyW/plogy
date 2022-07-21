@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+build() {
+    docker build -t pylogy-container:latest .
+}
+
+run() {
+    echo $(docker run -it -d -p 5000:5000 pylogy-container:latest) > .id
+}
+
+kill() {
+    docker kill $(cat .id);
+}
+
+case $1 in
+    build) build
+	;;
+    run) run
+	;;
+    kill) kill
+	;;
+    *) printf "usage:\n\tkill kills the container\n\tbuild builds the container\n\trun runs the container"
+esac

@@ -3,19 +3,15 @@
 import requests
 import json
 
-URL = "http://localhost:5000/add_post"
+URL = "http://localhost:5000/posts/add"
 
 
-def test() -> None:
-    data = {"hello": "world"}
-    bad_data = "wrong"
-    good_response = requests.post(URL, json=json.dumps(data))
-    bad_response = requests.post(URL, data=bad_data)
+def test(_: bool = False) -> None:
+    data = {
+        "userId": 3,
+        "title": "3rd post this month!",
+        "body": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+    }
+    r = requests.post(URL, json=json.dumps(data))
 
-    assert good_response.status_code == 200
-    assert bad_response.status_code == 400
-
-    print(f"{good_response.json()}\n{bad_response.json()}")
-
-
-test()
+    assert r.status_code == 200
