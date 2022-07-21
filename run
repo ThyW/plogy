@@ -2,12 +2,19 @@
 
 set -e
 
+arg=$2
+
 build() {
     docker build -t pylogy-container:latest .
 }
 
 run() {
-    echo $(docker run -it -d -p 5000:5000 pylogy-container:latest) > .id
+    
+    if [[ $arg = "-d" ]]; then 
+	echo $(docker run -it -d -p 5000:5000 pylogy-container:latest) > .id
+    else
+	docker run -it -p 5000:5000 pylogy-container:latest
+    fi
 }
 
 kill() {
@@ -21,5 +28,7 @@ case $1 in
 	;;
     kill) kill
 	;;
-    *) printf "usage:\n\tkill kills the container\n\tbuild builds the container\n\trun runs the container"
+    help | --help | -h) printf "usage:\n\tkill\t\t\t\t kills the container\n\tbuild\t\t\t\t builds the container\n\trun\t\t\t\t runs the container\n\trun -d \t\t\t\t runs the container as a deamon\n\thelp | --help | h\t\t shows this help message \n"
+	;;
+    *) exit
 esac

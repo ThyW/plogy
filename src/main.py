@@ -161,10 +161,8 @@ def post_by_id(id: int) -> Response | str:
     if post_query := Posts.query.filter_by(id=id).first():
         return jsonify(post_query.to_json())
     elif post := find_post(id):
-        requests.post("http://localohost:5000/posts/add", json=post)
-        query = Posts.query.filter_by(id=id)
-        if query:
-            return jsonify(query.to_json())
+        requests.post("http://localhost:5000/posts/add", json=json.dumps(post))
+        return jsonify(post)
     return make_error(app, Error.not_found)
 
 
