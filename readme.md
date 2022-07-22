@@ -13,6 +13,11 @@ $ ./run run -d
 # run the docker not as a deamon, while still exposing the port 5000
 $ ./run run
 
+# to enter the shell inside the docker
+$ ./run run shell
+# if you wish to view the database, you can than run from within the docker shell:
+$ sqlite3 data/sqlite.db
+
 # if you wish to kill the docker image, run:
 $ ./run kill
 
@@ -44,3 +49,4 @@ You can try the API, by running the `tests/all.py` Python file, which should fin
 2. 21.07.
     - 10:22 - 11:08 | `00:46`
     - 16:17 - 19:45 | `03:28`
+    - 20:00 - 20:30 | `00:30`
