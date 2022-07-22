@@ -22,9 +22,6 @@ def add_post() -> Response:
                 userId:
                     type: integer
                     description: Post creator's userId.
-                id:
-                    type: integer
-                    description: Id of the post.
                 title:
                     type: integer
                     description: Title of the post.
