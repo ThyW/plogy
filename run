@@ -3,14 +3,12 @@
 set -e
 
 arg=$2
-arg2=$3
 
 build() {
     docker build -t pylogy-container:latest .
 }
 
 run() {
-    
     if [[ $arg = "-d" ]]; then 
 	echo $(docker run -it -d -p 5000:5000 pylogy-container:latest) > .id
     elif [[ $arg = "shell" ]]; then

@@ -30,7 +30,7 @@ Alternatively, if you wish to run without `docker`, just run the `src/main.py` a
 Once this is done, you can check that the service works by going to: `http://localhost:5000/api/swagger.json` for a `Swagger` documentation about this service's API.
 
 ## Tests
-You can try the API, by running the `tests/all.py` Python file, which should finish without any errors.
+You can try the API by running the `tests/all.py` Python file, which should finish without any errors.
 
 # TODO
 - [x] `/posts/add` - using the userId, if the userId is not valid, return bad auth, if all is well, save
@@ -41,12 +41,14 @@ You can try the API, by running the `tests/all.py` Python file, which should fin
 - [x] swagger documentation available on endpoint `/api/swagger.json`
 
 
-# TIMES
+# WORK TIME
 1. 19.07.
     - 17:25 - 18:54 | `01:29`
 2. 20.07.
     - 10:22 - 12:33 | `02:11`
-2. 21.07.
+3. 21.07.
     - 10:22 - 11:08 | `00:46`
     - 16:17 - 19:45 | `03:28`
     - 20:00 - 20:30 | `00:30`
+4. 23.07.:
+    - 19:05 - 19:30 | `00:25`

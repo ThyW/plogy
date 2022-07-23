@@ -9,7 +9,7 @@ from extern_api import authenticate_user, find_post
 from db import Addresses, Coordinates, Posts, Users, Companies, app, db
 
 
-@app.route("/posts/add", methods=["POST"])
+@app.route("/v1/api/posts/add", methods=["POST"])
 def add_post() -> Response:
     """
     Add a new post.
@@ -110,7 +110,7 @@ def add_post() -> Response:
         return make_error(app, Error.not_json)
 
 
-@app.route("/posts/", methods=["GET"])
+@app.route("/v1/api/posts/", methods=["GET"])
 def posts() -> Response | str:
     """
     List all available posts
@@ -135,7 +135,7 @@ def posts() -> Response | str:
     return jsonify(ret)
 
 
-@app.route("/posts/id/<int:id>", methods=["GET"])
+@app.route("/v1/api/posts/id/<int:id>", methods=["GET"])
 def post_by_id(id: int) -> Response | str:
     """
     Attempt to find and return a post with the given ID.
@@ -163,7 +163,7 @@ def post_by_id(id: int) -> Response | str:
     return make_error(app, Error.not_found)
 
 
-@app.route("/posts/userId/<int:user_id>")
+@app.route("/v1/api/posts/userId/<int:user_id>")
 def post_by_uid(user_id: int) -> Response | str:
     """
     Attempt to find and return a list of posts made by the same user.
@@ -194,7 +194,7 @@ def post_by_uid(user_id: int) -> Response | str:
         return jsonify(ret)
 
 
-@app.route("/posts/remove/<int:id>", methods=["GET"])
+@app.route("/v1/api/posts/remove/<int:id>", methods=["GET"])
 def remove(id: int) -> Response:
     """
     Remove a post, given its ID.
@@ -221,7 +221,7 @@ def remove(id: int) -> Response:
         return make_error(app, Error.not_found)
 
 
-@app.route("/posts/edit/<int:id>", methods=["POST"])
+@app.route("/v1/api/posts/edit/<int:id>", methods=["POST"])
 def edit(id: int) -> str | Response:
     """
     Attempt to modify a post, given it's ID.
@@ -280,7 +280,7 @@ def edit(id: int) -> str | Response:
     return make_error(app, Error.not_json)
 
 
-@app.route("/api/swagger.json")
+@app.route("/v1/api/swagger.json")
 def spec() -> Response:
     """
     Return the API description.

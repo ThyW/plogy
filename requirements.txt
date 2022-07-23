@@ -1,5 +1,5 @@
+typing_extensions==4.3.0
 Flask==2.1.3
-dataclasses-json==0.5.7
 SQLAlchemy==1.4.39 
 Flask-SQLAlchemy==2.5.1
 flask-swagger==0.2.14
