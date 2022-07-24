@@ -22,6 +22,9 @@ def add_post() -> Response:
                 userId:
                     type: integer
                     description: Post creator's userId.
+                id:
+                    type: integer
+                    description: Unique identifier of a post.
                 title:
                     type: integer
                     description: Title of the post.
@@ -102,6 +105,8 @@ def add_post() -> Response:
                         return Response(status=200)
                     else:
                         return make_error(app, Error.unauthorized)
+                else:
+                    return make_error(app, Error.invalid_input)
             else:
                 return make_error(app, Error.unauthorized)
         else:
