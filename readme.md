@@ -1,5 +1,5 @@
 # Setup
-Assuming you have `docker` installed and running as a system service(if your system uses `systemd`, run `sudo systemctl start docker.service`), run the following from the project's root directory:
+Assuming you have `docker` installed and running as a system service(if your system uses `systemd` and the `docker` service is not running, run `sudo systemctl start docker.service`), run the following from the project's root directory:
 ```
 # this creates the data directory where the database will live
 $ mkdir data
@@ -9,7 +9,10 @@ $ ./run build
 
 # run the docker image as a deamon, exposing the port 5000
 $ ./run run -d
+```
 
+Other options which can be passed to the `run` script are:
+```
 # run the docker not as a deamon, while still exposing the port 5000
 $ ./run run
 
@@ -18,10 +21,10 @@ $ ./run run shell
 # if you wish to view the database, you can than run from within the docker shell:
 $ sqlite3 data/sqlite.db
 
-# if you wish to kill the docker image, run:
+# if you wish to kill the docker image running as a deamon, run:
 $ ./run kill
 
-# for use of the run command use
+# for the usage of the run command, you can use:
 $ ./run -h 
 ```
 
@@ -33,12 +36,12 @@ Once this is done, you can check that the service works by going to: `http://loc
 You can try the API by running the `tests/all.py` Python file, which should finish without any errors.
 
 # TODO
-- [x] `/posts/add` - using the userId, if the userId is not valid, return bad auth, if all is well, save
-- [x] `/posts/userId/<uid>` or `posts/id/<id>` or `posts/` - attempt to return a post as json data
+- [x] `/v1/api/posts/add` - using the userId, if the userId is not valid, return bad auth, if all is well, save
+- [x] `/v1/api/posts/userId/<uid>` or `/v1/apiposts/id/<id>` or `posts/` - attempt to return a post as json data
     - if searching by id and the post is not found, fetch from external API and save
-- [x] `/posts/remove/<id>` - remove a post given its id
-- [x] `/posts/edit/<id>` - change to title and body, to the new title and body
-- [x] swagger documentation available on endpoint `/api/swagger.json`
+- [x] `/v1/api/posts/remove/<id>` - remove a post given its id
+- [x] `/v1/api/posts/edit/<id>` - change to title and body, to the new title and body
+- [x] swagger documentation available on endpoint `/v1/api/swagger.json`
 
 
 # WORK TIME
